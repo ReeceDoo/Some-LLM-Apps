@@ -122,7 +122,7 @@ pyreadline3==3.4.1
 python-dateutil
 python-dotenv==1.0.1
 python-multipart==0.0.9
-pytz==2024.1
+pytz
 pywin32==305.1
 PyYAML==6.0.1
 pyzmq
