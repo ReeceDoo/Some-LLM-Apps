@@ -6,8 +6,6 @@ from haiguitang_gamehost.haiguitang import haiguitang_txt
 
 import os
 
-DEFINE OPENAI_API_KEY
-
 def haiguitang_gamehost(user_prompt, openai_api_key):
     prompt = ChatPromptTemplate.from_messages(
         [
