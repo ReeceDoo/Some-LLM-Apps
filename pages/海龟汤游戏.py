@@ -30,7 +30,7 @@ if st.session_state.free_api:
     # 提示
     st.warning("🔑 正在使用免费API")
     # openai_api_key = os.getenv("OPENAI_API_KEY")
-    openai_api_key = ${{ secrets.SuperSecret}}
+    openai_api_key = secrets.OPENAI_API_KEY
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "ai", 
