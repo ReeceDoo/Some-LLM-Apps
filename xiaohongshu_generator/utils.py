@@ -20,9 +20,9 @@ def generate_xiaohongshu(theme, openai_api_key):
     # 判断openai_api_key是否为系统的环境变量/免费API
     # if openai_api_key == os.getenv("OPENAI_API_KEY"):
     if openai_api_key == st.secrets["OPENAI_API_KEY"]:
-        model = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=openai_api_key, openai_api_base="https://api.aigc369.com/v1")
+        model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key, openai_api_base="https://api.aigc369.com/v1")
     else:
-        model = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=openai_api_key)
+        model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key)
     
     # model = ChatOpenAI(openai_api_key=openai_api_key, openai_api_base="https://api.aigc369.com/v1")
     output_parser = PydanticOutputParser(pydantic_object=Xiaohongshu)
