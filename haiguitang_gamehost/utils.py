@@ -6,6 +6,8 @@ from haiguitang_gamehost.haiguitang import haiguitang_txt
 
 import os
 
+DEFINE OPENAI_API_KEY
+
 def haiguitang_gamehost(user_prompt, openai_api_key):
     prompt = ChatPromptTemplate.from_messages(
         [
@@ -13,9 +15,7 @@ def haiguitang_gamehost(user_prompt, openai_api_key):
             ("user", haiguitang_user_template),
         ])
     # 判断openai_api_key是否为系统的环境变量/免费API
-    print(os.getenv("OPENAI_API_KEY"))
     if openai_api_key == os.getenv("OPENAI_API_KEY"):
-    # if openai_api_key == process.env.OPEN_AI_KEY:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key, openai_api_base="https://api.aigc369.com/v1")
     else:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key)
