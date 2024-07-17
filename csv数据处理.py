@@ -38,7 +38,8 @@ if st.session_state.free_api:
     # st.markdown("*🔑 正在使用免费API*")
     # 提示
     st.warning("🔑 正在使用免费API")
-    openai_api_key = os.getenv("OPENAI_API_KEY")
+    # openai_api_key = os.getenv("OPENAI_API_KEY")
+    openai_api_key = "sk-RnkevZWgbGsrU6OoFa5730B144904556991dF0359b27B0F8"
 
 
 data = st.file_uploader("上传你的数据文件（CSV格式）：", type="csv")
