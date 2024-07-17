@@ -7,7 +7,6 @@ import streamlit as st
 
 from haiguitang_gamehost.prompt_template import haiguitang_system_template
 from haiguitang_gamehost.haiguitang import haiguitang_txt
-from openai_api_key import DEFUALT_OPENAI_API_KEY
 
 st.title("海龟汤游戏主持")
 
@@ -31,7 +30,7 @@ if st.session_state.free_api:
     # 提示
     st.warning("🔑 正在使用免费API")
     # openai_api_key = os.getenv("OPENAI_API_KEY")
-    openai_api_key = DEFUALT_OPENAI_API_KEY
+    openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "ai", 

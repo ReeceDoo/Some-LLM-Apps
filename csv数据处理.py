@@ -1,4 +1,3 @@
-from openai_api_key import DEFUALT_OPENAI_API_KEY
 import pandas as pd
 import streamlit as st
 from csv_data_processor.utils import dataframe_agent
@@ -40,7 +39,7 @@ if st.session_state.free_api:
     # 提示
     st.warning("🔑 正在使用免费API")
     # openai_api_key = os.getenv("OPENAI_API_KEY")
-    openai_api_key = DEFUALT_OPENAI_API_KEY
+    openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 
 data = st.file_uploader("上传你的数据文件（CSV格式）：", type="csv")

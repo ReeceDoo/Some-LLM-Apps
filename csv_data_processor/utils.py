@@ -1,4 +1,4 @@
-from openai_api_key import DEFUALT_OPENAI_API_KEY
+import streamlit as st
 
 import json
 from langchain_openai import ChatOpenAI
@@ -36,7 +36,7 @@ PROMPT_TEMPLATE = """
 def dataframe_agent(openai_api_key, df, query):
     # 判断openai_api_key是否为系统的环境变量/免费API
    #  if openai_api_key == os.getenv("OPENAI_API_KEY"):
-   if openai_api_key == DEFUALT_OPENAI_API_KEY:
+   if openai_api_key == st.secrets["OPENAI_API_KEY"]:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key, temperature=0, openai_api_base="https://api.aigc369.com/v1")
    else:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key, temperature=0)

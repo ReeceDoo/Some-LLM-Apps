@@ -6,7 +6,6 @@ import streamlit as st
 from langchain.memory import ConversationBufferMemory
 from pdf_file_qa.utils import qa_agent
 
-from openai_api_key import DEFUALT_OPENAI_API_KEY
 
 
 st.title("📑 AI智能PDF问答工具")
@@ -35,7 +34,7 @@ if st.session_state.free_api:
     # 提示
     st.warning("🔑 正在使用免费API")
     # openai_api_key = os.getenv("OPENAI_API_KEY")
-    openai_api_key = DEFUALT_OPENAI_API_KEY
+    openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 if "memory" not in st.session_state:
     st.session_state["memory"] = ConversationBufferMemory(

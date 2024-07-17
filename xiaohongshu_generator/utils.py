@@ -1,6 +1,7 @@
 from xiaohongshu_generator.prompt_template import system_template_text, user_template_text
 from xiaohongshu_generator.xiaohongshu_model import Xiaohongshu
-from openai_api_key import DEFUALT_OPENAI_API_KEY
+
+import streamlit as st
 
 from langchain_openai import ChatOpenAI
 from langchain.output_parsers import PydanticOutputParser
@@ -18,7 +19,7 @@ def generate_xiaohongshu(theme, openai_api_key):
     )
     # 判断openai_api_key是否为系统的环境变量/免费API
     # if openai_api_key == os.getenv("OPENAI_API_KEY"):
-    if openai_api_key == DEFUALT_OPENAI_API_KEY:
+    if openai_api_key == st.secrets["OPENAI_API_KEY"]:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key, openai_api_base="https://api.aigc369.com/v1")
     else:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key)

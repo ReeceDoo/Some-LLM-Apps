@@ -4,7 +4,6 @@ import sys
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 import streamlit as st
 from xiaohongshu_generator.utils import generate_xiaohongshu
-from openai_api_key import DEFUALT_OPENAI_API_KEY
 
 st.title("爆款小红书AI写作助手✏")
 
@@ -28,7 +27,7 @@ if st.session_state.free_api:
     # 提示
     st.warning("🔑 正在使用免费API")
     # openai_api_key = os.getenv("OPENAI_API_KEY")
-    openai_api_key = DEFUALT_OPENAI_API_KEY
+    openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 
 theme = st.text_input("💡 请输入小红书主题：")
