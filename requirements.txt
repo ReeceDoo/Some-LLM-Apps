@@ -169,4 +169,4 @@ wheel==0.43.0
 wikipedia==1.4.0
 wrapt==1.16.0
 yarl==1.9.4
-zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1718013267051/work
+zipp
