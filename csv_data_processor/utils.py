@@ -1,3 +1,5 @@
+from openai_api_key import DEFUALT_OPENAI_API_KEY
+
 import json
 from langchain_openai import ChatOpenAI
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
@@ -33,20 +35,21 @@ PROMPT_TEMPLATE = """
 
 def dataframe_agent(openai_api_key, df, query):
     # 判断openai_api_key是否为系统的环境变量/免费API
-    if openai_api_key == os.getenv("OPENAI_API_KEY"):
+   #  if openai_api_key == os.getenv("OPENAI_API_KEY"):
+   if openai_api_key == DEFUALT_OPENAI_API_KEY:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key, temperature=0, openai_api_base="https://api.aigc369.com/v1")
-    else:
+   else:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key, temperature=0)
     # model = ChatOpenAI(model="gpt-4-turbo",
     #                    openai_api_key=openai_api_key,
     #                    temperature=0)
-    agent = create_pandas_dataframe_agent(llm=model,
+   agent = create_pandas_dataframe_agent(llm=model,
                                           df=df,
                                           agent_executor_kwargs={"handle_parsing_errors": True},
                                           verbose=True,
                                           allow_dangerous_code=True)
-    prompt = PROMPT_TEMPLATE + query
-    response = agent.invoke({"input": prompt})
-    response_dict = json.loads(response["output"])
-    return response_dict
+   prompt = PROMPT_TEMPLATE + query
+   response = agent.invoke({"input": prompt})
+   response_dict = json.loads(response["output"])
+   return response_dict
 

@@ -1,8 +1,11 @@
+from openai_api_key import DEFUALT_OPENAI_API_KEY
+from haiguitang_gamehost.prompt_template import haiguitang_system_template, haiguitang_user_template
+from haiguitang_gamehost.haiguitang import haiguitang_txt
+
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 
-from haiguitang_gamehost.prompt_template import haiguitang_system_template, haiguitang_user_template
-from haiguitang_gamehost.haiguitang import haiguitang_txt
+
 
 import os
 
@@ -13,7 +16,8 @@ def haiguitang_gamehost(user_prompt, openai_api_key):
             ("user", haiguitang_user_template),
         ])
     # 判断openai_api_key是否为系统的环境变量/免费API
-    if openai_api_key == os.getenv("OPENAI_API_KEY"):
+    # if openai_api_key == os.getenv("OPENAI_API_KEY"):
+    if openai_api_key == DEFUALT_OPENAI_API_KEY:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key, openai_api_base="https://api.aigc369.com/v1")
     else:
         model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key)
